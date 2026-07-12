@@ -11,6 +11,17 @@ class ProjectTest < Minitest::Test
     load_feature_entries
   end
 
+  def test_every_cop_file_is_registered_exactly_once
+    cop_root = File.expand_path('../lib/rubocop/cop', __dir__)
+    files = Dir[File.join(cop_root, 'minitest', '*.rb')].sort
+
+    registered = RuboCop::Cop::Registry.global.cops_for_department(:Minitest).map do |cop|
+      Object.const_source_location(cop.name).first
+    end.sort
+
+    assert_equal(files, registered)
+  end
+
   def test_changelog_has_newline_at_end_of_file
     assert(@changelog.end_with?("\n"))
   end
