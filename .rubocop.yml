@@ -2,6 +2,10 @@
 
 inherit_from: .rubocop_todo.yml
 
+inherit_mode:
+  merge:
+    - Exclude
+
 plugins:
   - rubocop-internal_affairs
   - rubocop-minitest
@@ -49,6 +53,10 @@ Naming/InclusiveLanguage:
     does_not_registers:
       Suggestions:
         - does_not_register
+
+Style/Documentation:
+  Exclude:
+    - lib/rubocop/cop/minitest.rb
 
 Style/FormatStringToken:
   # Because we parse a lot of source codes from strings. Percent arrays
