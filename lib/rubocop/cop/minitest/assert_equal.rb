@@ -28,7 +28,7 @@ module RuboCop
           }
         PATTERN
 
-        # rubocop:disable Metrics/AbcSize
+        # rubocop:disable-next Metrics/AbcSize
         def on_send(node)
           assert_equal(node) do |expected, actual, rest_args|
             basic_arguments = "#{expected.source}, #{actual.source}"
@@ -48,7 +48,6 @@ module RuboCop
             end
           end
         end
-        # rubocop:enable Metrics/AbcSize
       end
     end
   end

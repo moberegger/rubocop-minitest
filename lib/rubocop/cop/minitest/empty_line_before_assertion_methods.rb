@@ -23,7 +23,7 @@ module RuboCop
 
         MSG = 'Add empty line before assertion.'
 
-        # rubocop:disable Metrics/CyclomaticComplexity
+        # rubocop:disable-next Metrics/CyclomaticComplexity
         def on_send(node)
           return unless (assertion_method = assertion_method(node))
           return unless (previous_line_node = assertion_method.left_sibling)
@@ -36,7 +36,6 @@ module RuboCop
 
           register_offense(assertion_method, previous_line_node)
         end
-        # rubocop:enable Metrics/CyclomaticComplexity
 
         private
 

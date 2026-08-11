@@ -56,7 +56,7 @@ module RuboCop
           hash[hook] = LIFECYCLE_HOOK_METHODS_IN_ORDER.index(hook) || REGULAR_METHOD_POSITION
         end
 
-        # rubocop:disable Metrics/MethodLength
+        # rubocop:disable-next Metrics/MethodLength
         def on_class(class_node)
           return unless test_class?(class_node)
 
@@ -77,7 +77,6 @@ module RuboCop
             previous_hook_node = node
           end
         end
-        # rubocop:enable Metrics/MethodLength
 
         private
 

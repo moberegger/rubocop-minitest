@@ -123,7 +123,7 @@ module RuboCop
     #     end
     #   end
     #
-    # rubocop:disable Metrics/ModuleLength
+    # rubocop:disable-next Metrics/ModuleLength
     module AssertOffense
       PLUGIN_INTEGRATION_MUTEX = Mutex.new
       private_constant :PLUGIN_INTEGRATION_MUTEX
@@ -404,6 +404,5 @@ module RuboCop
         ENV.fetch('PARSER_ENGINE', :parser_whitequark).to_sym
       end
     end
-    # rubocop:enable Metrics/ModuleLength
   end
 end

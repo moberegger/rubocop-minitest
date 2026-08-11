@@ -36,7 +36,7 @@ module RuboCop
             $_?)
         PATTERN
 
-        # rubocop:disable Metrics/AbcSize
+        # rubocop:disable-next Metrics/AbcSize
         def on_send(node)
           if (equal_node, expected_node, actual_node, message_node = refute_with_equal?(node))
             add_offense(node, message: message(expected_node, actual_node, message_node.first)) do |corrector|
@@ -51,7 +51,6 @@ module RuboCop
             end
           end
         end
-        # rubocop:enable Metrics/AbcSize
 
         private
 

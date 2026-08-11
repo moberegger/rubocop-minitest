@@ -34,7 +34,7 @@ module RuboCop
           }
         PATTERN
 
-        # rubocop:disable Metrics/AbcSize
+        # rubocop:disable-next Metrics/AbcSize
         def on_send(node)
           refute_match(node) do |expected, actual, rest_args|
             basic_arguments = order_expected_and_actual(expected, actual)
@@ -54,7 +54,6 @@ module RuboCop
             end
           end
         end
-        # rubocop:enable Metrics/AbcSize
 
         private
 

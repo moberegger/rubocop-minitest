@@ -40,7 +40,7 @@ module RuboCop
 
         private
 
-        # rubocop:disable Metrics
+        # rubocop:disable-next Metrics
         def offense?(node)
           expected, actual, = node.arguments
 
@@ -62,7 +62,6 @@ module RuboCop
             false
           end
         end
-        # rubocop:enable Metrics
 
         def empty_composite?(node)
           return true if node.str_type? && node.value.empty?
