@@ -67,10 +67,15 @@ module RuboCop
             assertions_count(node.body) + assertions_count_in_branches(node.branches)
           when :block, :numblock, :itblock
             assertions_count(node.body)
-          when *RuboCop::AST::Node::ASSIGNMENTS
-            assertions_count_in_assignment(node)
           else
-            node.each_child_node.sum { |child| assertions_count(child) }
+            # Splatting the `ASSIGNMENTS` Set into a `when` makes every other node pay a linear scan.
+            # Collapse it into the `case` once the gemspec floor is Ruby 3.1+, which supports `Set#===`.
+            return assertions_count_in_assignment(node) if RuboCop::AST::Node::ASSIGNMENTS.include?(node.type)
+
+            # `each_child_node` without a block allocates an Enumerator per node.
+            total = 0
+            node.each_child_node { |child| total += assertions_count(child) }
+            total
           end
         end
 
