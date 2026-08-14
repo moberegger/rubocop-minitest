@@ -23,7 +23,7 @@ module RuboCop
         must_output must_pattern_match must_raise must_be_silent must_throw wont_pattern_match
       ].freeze
 
-      MATCHER_METHODS = VALUE_MATCHERS + BLOCK_MATCHERS
+      MATCHER_METHODS = (VALUE_MATCHERS + BLOCK_MATCHERS).to_set.freeze
 
       ASSERTION_PREFIXES = %i[assert refute].freeze
 
